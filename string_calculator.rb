@@ -1,17 +1,16 @@
 class StringCalculator
+	
 	def self.add(input)
 		return 0 if input.empty?
-		return 1 if input == "1"
-		return sum_two_numbers(input) if two_numbers_with_comma?(input)
+		value = handle_comma_separated_value(input)
+		addition_of_value(value)
 	end
 
-	private
+	def self.handle_comma_separated_value(input)
+		input.split(',')
+	end
 
-	def self.two_numbers_with_comma?(input)
-    input[0].to_i.positive? && input[1] == ',' && input[2].to_i.positive?
-  end
-
-	def self.sum_two_numbers(input)
-    input[0].to_i + input[2].to_i
-  end
+	def self.addition_of_value(value)
+		value.map(&:to_i).sum
+	end
 end

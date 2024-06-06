@@ -20,5 +20,11 @@ RSpec.describe StringCalculator do
         expect(StringCalculator.add("4,5")).to eq(9)
       end
     end
+
+    context "when given multiple comma seperated values" do
+      it "return sum of all values" do
+        expect(StringCalculator.add("4,6,0,8")).to eq(18)
+      end
+    end
   end
 end
