@@ -9,7 +9,8 @@ class StringCalculator
 		else
 			value  = handling_separated_value(input)
 		end
-		addition_of_values(value)
+		validate_no_negative_numbers(value)
+    sum_of_values(value)
 	end
 
 	private
@@ -29,7 +30,12 @@ class StringCalculator
 		input.split(/[,\n]/)
 	end
 
-	def self.addition_of_values(value)
-		value.map(&:to_i).sum
-	end
+	def self.sum_of_values(values)
+    values.map(&:to_i).sum
+  end
+
+  def self.validate_no_negative_numbers(values)
+    negatives = values.map(&:to_i).select(&:negative?)
+    raise "negative numbers not allowed please give positive number #{negatives.join(', ')}" unless negatives.empty?
+  end
 end
