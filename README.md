@@ -13,7 +13,6 @@ Running Tests
 This project uses RSpec for testing. To run the tests, first, make sure you have RSpec installed:
 
 ```gem install rspec```
-```gem install pry-nav```
 
 Then, navigate to the project directory and run:
 
