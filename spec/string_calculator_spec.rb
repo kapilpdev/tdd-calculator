@@ -26,5 +26,11 @@ RSpec.describe StringCalculator do
         expect(StringCalculator.add("4,6,0,8")).to eq(18)
       end
     end
+
+    context "when given new lines and comma separated values" do
+      it "return sum of all values" do
+        expect(StringCalculator.add("1\n5,3,8")).to eq(17)
+      end
+    end
   end
 end
