@@ -32,5 +32,11 @@ RSpec.describe StringCalculator do
         expect(StringCalculator.add("1\n5,3,8")).to eq(17)
       end
     end
+
+    context "when given value containing delimeter" do
+      it "return sum of all values" do
+        expect(StringCalculator.add("//;\n1;2")).to eq(3)
+      end
+    end
   end
 end
