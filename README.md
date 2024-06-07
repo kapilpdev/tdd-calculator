@@ -10,12 +10,14 @@ The StringCalculator class is a Ruby implementation designed to perform arithmet
 
 Running Tests
 
-This project uses RSpec for testing. To run the tests, first, make sure you have RSpec installed:
+This project uses RSpec for testing. To run the tests, first, make sure you have RSpec installed, you can use `bundle install` to install it
 
-```gem install rspec```
+navigate to the project directory and run:
 
-Then, navigate to the project directory and run:
+```bundle install ```
 
-```rspec```
+Then,
+
+```bundle exec rspec```
 
 This will execute the tests defined in string_calculator_spec.rb, verifying the functionality of the StringCalculator.

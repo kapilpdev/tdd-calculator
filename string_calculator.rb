@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 class StringCalculator
   def self.add(input)
     return 0 if input.empty?
 
     numbers = extract_numbers(input)
     validate_no_negative_numbers(numbers)
-    
+
     sum_of_values(numbers)
   end
 
