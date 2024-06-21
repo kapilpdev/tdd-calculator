@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class StringCalculator
   def self.add(input)
     return 0 if input.empty?
@@ -5,14 +7,11 @@ class StringCalculator
     numbers = extract_numbers(input)
     validate_no_negative_numbers(numbers)
     if custom_delimiter_with_estric(input)
-      value = multiply_values(numbers) 
+      multiply_values(numbers)
     else
-      value = sum_of_values(numbers)
+      sum_of_values(numbers)
     end
-    value
   end
-
-  private
 
   def self.extract_numbers(input)
     if custom_delimiter?(input) || custom_delimiter_with_estric(input)
@@ -24,21 +23,20 @@ class StringCalculator
   end
 
   def self.custom_delimiter_with_estric(input)
-    input.start_with?("**")
+    input.start_with?('**')
   end
 
   def self.custom_delimiter?(input)
-    input.start_with?("//")
+    input.start_with?('//')
   end
 
   def self.extract_custom_delimiter(input)
-    if input.start_with?('//')
-      match = input.match(%r{//(.+)\n(.*)})
-      delimiter = Regexp.escape(match[1])
-    else
-      match = input.match(%r{(.+)\n(.*)})
-      delimiter = Regexp.escape(match[1])
-    end
+    match = if input.start_with?('//')
+              input.match(%r{//(.+)\n(.*)})
+            else
+              input.match(/(.+)\n(.*)/)
+            end
+    delimiter = Regexp.escape(match[1])
     numbers = match[2]
     [delimiter, numbers]
   end
@@ -53,7 +51,7 @@ class StringCalculator
 
   def self.validate_no_negative_numbers(values)
     negatives = values.map(&:to_i).select(&:negative?)
-		raise "negative numbers not allowed please give positive number #{negatives.join(', ')}" unless negatives.empty?
+    raise "negative numbers not allowed please give positive number #{negatives.join(', ')}" unless negatives.empty?
   end
 
   def self.multiply_values(values)
